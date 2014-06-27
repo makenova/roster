@@ -1,0 +1,31 @@
+extends layout
+
+block header
+  .header
+    ul.nav.nav-pills.pull-right
+      li
+        a(href='/') Home
+      li.active
+        a(href='/roster') Roster
+    h3.text-muted #{title}
+  .jumbotron
+    h1= title
+    p(class='lead') Welcome to #{title}
+    p
+      a.btn.btn-lg.btn-success(href='/', role='button') Sign up today
+
+block content
+  .row
+    .col-md-8.col-md-offset-2
+      h1= title
+      p Welcome to #{title}
+  .row
+    div(id='roster', class='col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2')
+      each student in classlist
+        div(class='student col-sm-6 col-md-4 col-lg-4')
+          if student.picurl
+            img(src='#{student.picurl}', class='img-responsive', style='height:200px;width:200px;')
+          p #{student.name}
+          p #{student.email}
+          p
+            a(href='http://twitter.com/#{student.twitter}') #{student.twitter}

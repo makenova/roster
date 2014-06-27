@@ -1,0 +1,18 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.student {
+  /*border: 2px black solid;*/
+  padding: 5px;
+  margin: 5px;
+}
+
+.myfooter {
+  margin-top:20px;
+}

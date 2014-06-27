@@ -1,0 +1,30 @@
+extends layout
+
+block header
+  .header
+    ul.nav.nav-pills.pull-right
+      li.active
+        a(href='/') Home
+      li
+        a(href='/roster') Roster
+    h3.text-muted #{title}
+  .jumbotron
+    h1= title
+
+block content
+  .row(class='col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-2')
+    h1= title
+    p Welcome to #{title}
+  .row
+    div(class='signupForm col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2')
+      form(action='/roster',method='post',role='form')
+        div(class="form-group")
+          label(for='name', class='col-sm-4 control-label') Name:
+          input(id='name', class='form-control',type='text',value='',name='name',placeholder='John Doe')
+        div(class="form-group")
+          label(for='email', class='col-sm-4 control-label') Email:
+          input(id='email', class='form-control',type='email',value='',name='email',placeholder='jonDoe@example.com')
+        div(class="form-group")
+          label(for='twitter', class='col-sm-4 control-label') Twitter Handle:
+          input(id='twitter', class='form-control',type='text',value='',name='twitter',placeholder='jondoe')
+        input(type='submit',value='Sign Up',class='btn btn-success')
