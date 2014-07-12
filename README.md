@@ -47,3 +47,8 @@ template files. In a separate terminal, start the gulp watch task with:
 In your browser go to http://localhost:3000 and click on the live reload extension
 icon to start the live reload server. The circle in the middle of it should be
 filled in.
+
+## TODO
+[ x ] add student page
+[  ] add about page
+ 
