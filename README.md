@@ -49,6 +49,5 @@ icon to start the live reload server. The circle in the middle of it should be
 filled in.
 
 ## TODO
-[ x ] add student page
-[  ] add about page
- 
+- [x] add student page  
+- [ ] add about page
