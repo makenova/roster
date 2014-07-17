@@ -1,6 +1,6 @@
 var express = require('express');
+var classList = require('./classList');
 var student = require('./student');
-var student_details = require('./student_details');
 
 module.exports = function (app) {
   app.get('/', function(req, res) {
@@ -9,7 +9,6 @@ module.exports = function (app) {
   app.get('/about', function(req, res) {
 		res.render('about', { title: 'About OKCoders' });
 	});
-	app.use('/', student_details);
-	app.use('/roster', student);
-
+	app.use('/', classList);
+  app.use('/', student);
 };
