@@ -12,4 +12,9 @@ router.get('/:year/:student', function (req, res) {
 	res.render('student', {student: student, title: student.name})
 });
 
+// TODO: implemet the following routes, get update and delete a student
+router.get('/:year/:student', function (req, res) {});
+router.put('/:year/:student', function (req, res) {});
+router.delete('/:year/:student', function (req, res) {});
+
 module.exports = router;

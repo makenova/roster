@@ -1,6 +1,6 @@
 var express = require('express');
 var student = require('./student');
-var student_details = require('./student_details')
+var student_details = require('./student_details');
 
 module.exports = function (app) {
   app.get('/', function(req, res) {
