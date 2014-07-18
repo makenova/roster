@@ -1,19 +1,26 @@
-exports.get = function () {
-    return students;
-  }
-
-exports.getStudent = function(studentName) {
+exports.get = function (studentName, callback) {
+  if (!studentName) return callback(null, students);
   for (var i = 0, len = students.length; i < len; i ++) {
     if (studentName == students[i].name) {
-      return students[i];
+      return callback(null, students[i]);
     }
   }
-}
+  return callback(new Error('student not found'));
+};
 
-
-
-exports.put = function (student) {
+exports.put = function (student, callback) {
   students.push(student);
+  return callback(null);
+};
+
+exports.delete = function (studentName, callback) {
+  for (var i = 0, len=students.length; i < len; i++) {
+    if(studentName === students[i].name) {
+      students.splice(i,1);
+      return callback(null);
+    }
+  }
+  return callback(new Error('student not found'));
 };
 
 var students = [
