@@ -43,6 +43,7 @@ var students = [
   {
     id: 3,
     name:'Brono the Bruiser',
+    email: 'brono@example.com',
     twitter: 'dontdoit',
     picurl: 'http://i.imgur.com/tzBqudP.jpg',
     year: 2014
