@@ -1,53 +1,35 @@
 var express = require('express');
 var router = express.Router();
 var roster = require('../services/roster');
-var Student = require('../models/student');
 
-router.use(function(req, res, next) {
-  console.log('A student request!!');
-  next();
+router.get('/:year/:student', function (req, res) {
+	var studentName = req.params.student;
+	var year = req.params.year;
+	roster.get(studentName, function (err, student){
+		res.render('student', {student: student, title: student.name})
+	});
 });
 
-// get all students
-router.get('/:year?', function(req, res) {
-  // TODO: if a year is provided, get only that year, else get most recent year
-  classlist = roster.get();
-  res.render('roster', {
-      title: 'Summer 2014 Class Roster',
-      classlist: classlist
-    });
+// TODO: This is a stub
+router.get('/:student/edit', function (req, res) {
+  var student = req.params.student;
+  console.log('return a form to edit a student ' + student);
+	res.send(200, {message:'return a form to edit a student ' + student});
 });
 
-// create a student
-router.post('/', function(req, res) {
-  var student = req.body;
-  classlist = roster.put(student);
-  res.redirect('roster');
+// TODO: This is a stub
+router.put('/:student', function (req, res) {
+  var student = req.params.student;
+  console.log('update the student ' + student);
+	res.send(200, {message:'update the student ' + student});
 });
 
-/* create a student with mongoose */
-// router.post('/', function(req, res) {
-//   var student = new Student();
-//   student.name = req.body.name;
-//   student.email = req.body.email;
-//   student.twitter = req.body.twitter;
-//   student.picUrl = req.body.picUrl;
-//
-//   student.save(function (err){
-//     if (err) {throw err;}
-//     res.redirect('roster');
-//   });
-// });
-
-// TODO: implemet the following routes, get update and delete a student
-router.get('/:year/:student', function (req, res) {});
-router.put('/:year/:student', function (req, res) {});
-router.delete('/:year/:student', function (req, res) {});
-
-/* Alternate method to write above routes */
-// router.route('/:year/:student')
-//   .get(function(req, res){})
-//   .put(function(req,res){})
-//   .delete(function(req,res){});
+router.delete('/:student', function (req, res) {
+  var student = req.params.student;
+  roster.delete(student, function (err){
+		if(err) res.send('student not found');
+		res.send(200, {message:'delete student ' + student});
+	});
+});
 
 module.exports = router;
