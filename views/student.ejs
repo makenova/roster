@@ -19,34 +19,14 @@
         <div class="header">
             <ul class="nav nav-pills pull-right">
                 <li><a href="/">Home</a></li>
-                <li class="active"><a href="/roster">Roster</a></li>
-                <li><a href="/about">About</a></li>
+                <li><a href="/roster">Roster</a></li>
+                <li class="active"><a href="/about">About</a></li>
             </ul>
         </div>
         <img src="/img/1mu99rr-okcoders-logo.png">
 
         <div class="jumbotron">
             <h1><%= title %></h1>
-            <p class="lead">Welcome to <%=title%></p>
-            <p><a href="/" role="button" class="btn btn-lg btn-success">Sign up today</a></p>
-        </div>
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h1><%= title %></h1>
-                <p>Welcome to <%= title %></p>
-            </div>
-        </div>
-        <div class="row">
-            <div id="roster" class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
-                <% classlist.forEach(function (student) { %>
-                    <div class="student col-sm-6 col-md-4 col-lg-4">
-                        <img src="<%= student.picurl%>" class="img-responsive" alt="<%= student.name %>">
-                        <p><%= student.name %></p>
-                        <p><%= student.email %></p>
-                        <p><a href="http://twitter.com/<%= student.twitter %>"><%= student.twitter %></a> </p>
-                    </div>
-                <% }) %>
-            </div>
         </div>
         <div class="row">
             <div class="myfooter footer">
