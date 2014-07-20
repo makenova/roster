@@ -10,7 +10,8 @@ router.get('/:year/:student', function (req, res) {
 	});
 });
 
-// TODO: This is a stub
+// TODO: This is a stub for a function that will return a form
+// to update a student
 router.get('/:student/edit', function (req, res) {
   var student = req.params.student;
   console.log('return a form to edit a student ' + student);

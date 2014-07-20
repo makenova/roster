@@ -49,5 +49,12 @@ icon to start the live reload server. The circle in the middle of it should be
 filled in.
 
 ## TODO
-- [x] add student page  
-- [ ] add about page
+
+There are essentialy 3 views for this app. The about/index page, the class page, and the person details page
+
+- [ ] add about page (which will be the index page).  The index, which gives a description of the roster/alumni page, and two drop down inputs for year, and semester, which will load the class page.
+- [ ] add class page. This will still have the year and semester input buttons at the top, but then will have the details for the class, which includes a description of the class, two boxes underneath the description with the professor and TA. Below those two boxes will be 4 boxes across with the students in the class
+- [ ] A person details page, this will probably be a closable pop-up on the current page, that will give details on any picture clicked on the page. Most likely the details for the students, professor, and TA will be the same, but different views may be necessary depending on the attributes within each object.
+
+
+
