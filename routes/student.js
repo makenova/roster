@@ -6,7 +6,7 @@ router.get('/:year/:student', function (req, res) {
 	var studentName = req.params.student;
 	var year = req.params.year;
 	roster.get(studentName, function (err, student){
-		res.render('student', {student: student, title: student.name})
+		res.render('student', {student: student, title: student.name});
 	});
 });
 
@@ -28,8 +28,8 @@ router.put('/:student', function (req, res) {
 router.delete('/:student', function (req, res) {
   var student = req.params.student;
   roster.delete(student, function (err){
-		if(err) res.send('student not found');
-		res.send(200, {message:'delete student ' + student});
+		if(err) res.send(204, {message: 'student not found'});
+		res.redirect('/2014', {message:'delete student ' + student});
 	});
 });
 
