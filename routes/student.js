@@ -12,20 +12,20 @@ router.get('/:year/:student', function (req, res) {
 
 // TODO: This is a stub for a function that will return a form
 // to update a student
-router.get('/:student/edit', function (req, res) {
+router.get('/:year/:student/edit', function (req, res) {
   var student = req.params.student;
   console.log('return a form to edit a student ' + student);
 	res.send(200, {message:'return a form to edit a student ' + student});
 });
 
 // TODO: This is a stub
-router.put('/:student', function (req, res) {
+router.put('/:year/:student', function (req, res) {
   var student = req.params.student;
   console.log('update the student ' + student);
 	res.send(200, {message:'update the student ' + student});
 });
 
-router.delete('/:student', function (req, res) {
+router.delete('/:year/:student', function (req, res) {
   var student = req.params.student;
   roster.delete(student, function (err){
 		if(err) res.send(204, {message: 'student not found'});
