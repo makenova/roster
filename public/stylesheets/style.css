@@ -7,11 +7,11 @@ html, body {
 }
 
 .welcome {
-  color: #009530;
+  color: rgba(255,255,255,.7);
 }
 
 .welcome2 {
-  color: #0067C6;
+  color: rgba(255,255,255,.9);
 }
 
 .welcome_background {
@@ -19,10 +19,13 @@ html, body {
     padding: 10px;
 }
 
+.btn_center {
+  left: 41.5%;
+}
 
 /* padded section */
 .pad-section {
-  padding: 50px 0;
+  padding: 100px 0;
 }
 .pad-section img {
   width: 100%;
@@ -57,6 +60,8 @@ html, body {
 #about {
 
 }
+
+
 
 #services {
   background-color: #306d9f;
