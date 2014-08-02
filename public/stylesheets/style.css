@@ -19,16 +19,23 @@ html, body {
     padding: 10px;
 }
 
-.btn_center {
-  left: 41.5%;
+.class_selector {
+
 }
+
+
 
 /* padded section */
 .pad-section {
-  padding: 100px 0;
+  padding: 60px 0;
 }
 .pad-section img {
   width: 100%;
+}
+
+.form-control {
+  width: 20%;
+  display: initial;
 }
 
 /* vertical-centered text */
