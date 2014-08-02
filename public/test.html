@@ -70,12 +70,23 @@
   <div class="container">
     <h2 class="text-center">Classes</h2> <hr />
 
-     <!-- Split button -->
-    <div class="btn-group">
-      <button type="button" class="btn btn-danger">Year</button>
-      <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
-        <span class="caret"></span>
-        <span class="sr-only">Toggle Dropdown</span>
+
+    <div class = "btn-toolbar" role = "toolbar">
+    <div class="btn-group btn_center">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        Action <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>
+      </div>
+      <div class = "btn-group btn_center">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        Action <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu">
         <li><a href="#">Action</a></li>
@@ -85,10 +96,10 @@
         <li><a href="#">Separated link</a></li>
       </ul>
     </div>
-    
     </div>
   </div>
 </div>
+
 <!-- /third section -->
 
 <!-- fourth section - Information -->
@@ -148,8 +159,8 @@
   <!--  BODY PAGE CONTENT -->
 
   <!-- attach JavaScripts -->
-  <script src="javascripts/jquery-1.10.2.js"></script>
+  <script src="javascripts/jquery-2.1.1.min.js"></script>
   <script src="javascripts/bootstrap.min.js"></script>
-  <script src="javascripts/main.js"></script>
+
 </body>
 </html>
