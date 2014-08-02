@@ -26,6 +26,8 @@ StudentSchema.statics.createOrUpdate = function ( student, callback ) {
       console.log('err finding student when creating student');
       return callback(err);
     } else if (dbStudent) {
+      return callback(new Error('A student with that name already exists'));
+    } else {
       dbStudent.name = student.name;
       dbStudent.email = student.email;
       dbStudent.picUrl = student.picUrl;
