@@ -79,7 +79,7 @@
 				<% }) %>
 			</select>
 		</div>
-		<div class="form-group hidden">
+		<div class="form-group">
 			<label for="semester-list">Semester</label>
 			<select id="semester-list" class="form-control disabled">
 				<option>1</option>
@@ -153,7 +153,7 @@
   <script src="javascripts/jquery-2.1.1.min.js"></script>
   <script src="javascripts/bootstrap.min.js"></script>
   <script type="text/javascript">
-    var OKCoders = <%-classes%>
+    var OKCoders = JSON.parse('<%- classesString %>');
 	</script>
   <script src="javascripts/main.js"></script>
 
