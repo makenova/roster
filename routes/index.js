@@ -51,7 +51,7 @@ module.exports = function (app) {
     res.render('about', { title: 'About OKCoders' });
   });
   app.use('/class', classList);
-  app.use('/student', student);
+  app.use('/students', student);
 };
 
 

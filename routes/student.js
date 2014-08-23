@@ -1,6 +1,20 @@
 var express = require('express');
 var router = express.Router();
 var roster = require('../services/roster');
+var Student = require('../models/student');
+var Class = require('../models/class');
+
+router.get('/:year/:semester', function (req, res) {
+  // var semester = req.params.semester;
+  // var year = req.params.year;
+
+  // var query = Class.find({year:year, semester:semester}, {students:true}).populate('students');
+  // query.exec(function (err, students) {
+
+  // });
+  res.send({message: "hello"});
+});
+
 
 router.get('/:year/:student', function (req, res) {
 	var studentName = req.params.student;
