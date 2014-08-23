@@ -16,15 +16,16 @@ developing immediately.
   * `npm start`
 
 ### Advanced
-If you setup the project as described above, you will need to restart your node
-server every time you change server code (Anything not in your the public
+If you setup the project as described above, you will need to restart the node
+server every time you change server code (Anything not in the public or views
 directory) and refresh the browser window every time you change client side code.
 For slightly better development experience, you can install all the dependencies,
 including the dev-dependencies, with the following command:
 
-    `npm install`
+    npm install
 
-You will also need to install `supervisor` globally with:
+You will also need to install [`supervisor`](https://github.com/isaacs/node-supervisor)
+globally with:
 
     npm install -g supervisor
 
@@ -32,21 +33,26 @@ run your app with `supervisor` instead of `node` and it will watch your project
 folder and restart the server when it detects changes. Start the server
 with the following command **instead** of `npm start`
 
-    `supervisor bin/www`
+    supervisor bin/www
 
-![supervisor](http://i.imgur.com/g9B9Tit.png)
+![supervisor](./public/img/supervisor.png)
 
-Install the chrome live reload [extension](http://goo.gl/FPVV4U) to automatically
-refresh the browser when you make changes to your client side code and your
-template files. In a separate terminal, start the gulp watch task with:
+Install [`browser-sync`](https://github.com/shakyShane/browser-sync) globally with:
+
+		npm install -g browser-sync
+
+BrowserSync will run a proxy in front of your application which will watch
+for changes to files you specify and automatically refresh the browser. In a
+separate command line window/tab, run `gulp` which in turn will run
+`browser-sync`.
 
     gulp
 
-![alt tag](http://i.imgur.com/xSxBHxN.png)
+![bsync](./public/img/bsync.png)
 
-In your browser go to http://localhost:3000 and click on the live reload extension
-icon to start the live reload server. The circle in the middle of it should be
-filled in.
+BrowserSync should automatically launch your site locally on the port that is
+specified in the gulpfile e.g. http://localhost:4000 and any changes to the files
+that are being watched should trigger a refresh of the browser.
 
 ## TODO
 
