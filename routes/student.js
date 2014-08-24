@@ -5,14 +5,19 @@ var Student = require('../models/student');
 var Class = require('../models/class');
 
 router.get('/:year/:semester', function (req, res) {
-  // var semester = req.params.semester;
-  // var year = req.params.year;
+  var semester = req.params.semester;
+  var year = req.params.year;
 
-  // var query = Class.find({year:year, semester:semester}, {students:true}).populate('students');
-  // query.exec(function (err, students) {
+  var query = Class.find({year:year, semester:semester}, {students:true}).populate('students');
+  query.exec(function (err, students) {
+    if (err)
+      return console.log(err);
+    if (!students.length)
+      res.send(400,'No students for this class' + year + semester);
+    console.log(students[0].students);
+    res.send(students[0].students);
 
-  // });
-  res.send({message: "hello"});
+  });
 });
 
 
