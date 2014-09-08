@@ -12,7 +12,7 @@ module.exports = function (app) {
     query.exec(function (err, classes) {
       if (err) throw err;
       var sortedClasses = sortClasses(classes);
-      res.render('index', { title: 'OKCoders Roster', classes: sortedClasses, classesString: JSON.stringify(sortedClassses)});
+      res.render('index', { title: 'OKCoders Roster', classes: sortedClasses, classesString: JSON.stringify(sortedClasses)});
     });
   });
 

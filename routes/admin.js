@@ -10,26 +10,31 @@ router.get('/', function(req, res) {
 
 // create a student
 router.post('/', function(req, res) {
-  var student = new Student(req.body);
+  var year = req.body.year;
+  var semester = req.body.semester;
+  var student = new Student({
+    name: req.body.name,
+    email:req.body.email,
+    twitter: req.body.twitter
+  });
   student.save(function (err) {
     if (err) next(err);
-    Class.findOne().populate('students').exec(function (err, classObj) {
+    Class.findOne({semester: semester, year: year}).exec(function (err, classObj) {
       if (err || !classObj) {
-        var newclassObj = new Class({'year': '2014', semester: 'summer'});
+        var newclassObj = new Class({ year: year, semester: semester});
         newclassObj.students.push(student._id);
         newclassObj.save(function (err){
           if (err) next(err);
-          return res.render('roster', {title:'yo', classlist:[student]});
+          return res.redirect('/');
         });
       } else {
         classObj.students.push(student._id);
         classObj.save(function (err) {
-          Class.findOne({_id: classObj._id}).populate('students').exec(function (err) {
-            if (err) next(err);
-            res.render('roster', {title:'yo', classlist:classObj.students});
-          });
+          return res.redirect('/');
         });
       }
     });
   });
 });
+
+module.exports = router;
