@@ -16,9 +16,6 @@ module.exports = function (app) {
     });
   });
 
-  app.get('/about', function(req, res) {
-    res.render('about', { title: 'About OKCoders' });
-  });
   app.use('/admin', admin);
   app.use('/class', classList);
   app.use('/students', student);
