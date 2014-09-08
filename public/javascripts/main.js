@@ -20,9 +20,14 @@ $(function () {
     var semesterList = $('#semester-list');
     semesterList.empty();
 
+    // Fill in the semesters
     getSemester(selectedYear).forEach(function (semester){
       semesterList.append("<option>" + semester + "</option>");
     });
+
+    // select the first semester
+    getStudents(selectedYear, semesterList.val());
+
   });
 
   // on Semester change
@@ -48,9 +53,19 @@ function getSemester(year){
 function getStudents (year, semester) {
   $.get('/students/' + year + "/" + semester)
     .done(function (students) {
-      console.log(students);
+      fillStudents(null, students);
     })
     .fail(function (){
-      console.log('It failed');
+      fillStudents(new Error('Failed to get students'));
     });
+}
+
+function fillStudents (err, students) {
+  if (err) console.log(err);
+  $('#students-list').empty();
+  students.forEach(function (student) {
+    $('#students-list').append(
+      '<div class="col-xs-8 col-md-3"><a href="#" class="thumbnail"><img data-src="holder.js/100%x180" alt="...">' + student.name + '</a></div>'
+    );
+  });
 }

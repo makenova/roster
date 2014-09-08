@@ -4,6 +4,7 @@ var roster = require('../services/roster');
 var Student = require('../models/student');
 var Class = require('../models/class');
 
+// Return all students for a class(year, semester)
 router.get('/:year/:semester', function (req, res) {
   var semester = req.params.semester;
   var year = req.params.year;
@@ -20,7 +21,7 @@ router.get('/:year/:semester', function (req, res) {
   });
 });
 
-
+// Return a single student
 router.get('/:year/:student', function (req, res) {
 	var studentName = req.params.student;
 	var year = req.params.year;
