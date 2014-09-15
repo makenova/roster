@@ -6,6 +6,7 @@ var Schema = mongoose.Schema;
 var StudentSchema = new Schema ({
   name: String,
   email : String,
+  twitter: String,
   picUrl : {type: String, default: ""}
 });
 
@@ -14,6 +15,7 @@ StudentSchema.methods.update = function ( student ) {
   var self = this;
   self.name = student.name;
   self.email = student.email;
+  self.twitter = student.twitter;
   self.picUrl = student.picUrl;
 };
 
@@ -24,6 +26,8 @@ StudentSchema.statics.createOrUpdate = function ( student, callback ) {
       console.log('err finding student when creating student');
       return callback(err);
     } else if (dbStudent) {
+      return callback(new Error('A student with that name already exists'));
+    } else {
       dbStudent.name = student.name;
       dbStudent.email = student.email;
       dbStudent.picUrl = student.picUrl;
@@ -34,5 +38,5 @@ StudentSchema.statics.createOrUpdate = function ( student, callback ) {
   });
 };
 
-var Students = mongoose.model('Students', StudentSchema);
-module.exports = Students;
+var Student = mongoose.model('Student', StudentSchema);
+module.exports = Student;

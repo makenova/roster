@@ -1,11 +1,18 @@
 var gulp = require('gulp'),
-    livereload = require('gulp-livereload'),
-    watch = require('gulp-watch'),
-    lrfiles = ['./views/**/*', './public/**/*'];
+        browserSync = require('browser-sync'),
+        reload = browserSync.reload;
 
-gulp.task('watch', function () {
-  livereload.listen();
-  gulp.watch(lrfiles).on('change', livereload.changed);
+var watchFiles = ['./views/**/*', './public/**/*'];
+
+gulp.task('browser-sync', function() {
+    browserSync({
+        proxy: "localhost:3000",
+        port: 4000
+    });
+});
+
+gulp.task('watch', ['browser-sync'], function () {
+  gulp.watch(watchFiles, reload);
 });
 
 gulp.task('default', ['watch']);

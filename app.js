@@ -4,9 +4,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-// var mongoose = require('mongoose');
-
-// mongoose.connect('mongodb://127.0.0.1/roster');
+var mongoose = require('mongoose');
 
 var app = express();
 
@@ -29,6 +27,9 @@ app.use(function(req, res, next) {
     err.status = 404;
     next(err);
 });
+
+// Database connection 
+mongoose.connect('mongodb://127.0.0.1/roster');
 
 /// error handlers
 

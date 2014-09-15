@@ -1,34 +1,71 @@
-$(document).ready(function (){
+$(function () {
 
-  // create a LatLng object containing the coordinate for the center of the map
-  var latlng = new google.maps.LatLng(-33.86455, 151.209);
+    var semesterList = $('#semester-list');
+    var yearList = $('#year-list');
 
-  // prepare the map properties
-  var options = {
-    zoom: 15,
-    center: latlng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    navigationControl: true,
-    mapTypeControl: false,
-    scrollwheel: false,
-    disableDoubleClickZoom: true
-  };
+    semesterList.empty();
 
-  // initialize the map object
-  var map = new google.maps.Map(document.getElementById('google_map'), options);
+    var selectedYear = $('#year-list').val();
 
-  // add Marker
-  var marker1 = new google.maps.Marker({
-    position: latlng, map: map
+    getSemester(selectedYear).forEach(function (semester){
+      semesterList.append("<option>" + semester + "</option>");
+    });
+
+    var selectedSemester = semesterList.val();
+    getStudents(selectedYear, selectedSemester);
+
+  // on Year change
+  $('#year-list').on('change', function () {
+    selectedYear = $(this).val();
+    var semesterList = $('#semester-list');
+    semesterList.empty();
+
+    // Fill in the semesters
+    getSemester(selectedYear).forEach(function (semester){
+      semesterList.append("<option>" + semester + "</option>");
+    });
+
+    // select the first semester
+    getStudents(selectedYear, semesterList.val());
+
   });
 
-  // add listener for a click on the pin
-  google.maps.event.addListener(marker1, 'click', function() {
-    infowindow.open(map, marker1);
+  // on Semester change
+  $('#semester-list').on('change', function () {
+    selectedSemester = $(this).val();
+    getStudents(selectedYear, selectedSemester);
   });
 
-  // add information window
-  var infowindow = new google.maps.InfoWindow({
-    content:  '<div class="info"><strong>This is my company</strong><br><br>My company address is here<br> 32846 Sydney</div>'
-  });  
 });
+
+function getSemester(year){
+  var result;
+
+   OKCoders.forEach(function (currentObj) {
+    if (currentObj.year == year){
+      result = (currentObj.semesters);
+    }
+  });
+
+  return result;
+}
+
+function getStudents (year, semester) {
+  $.get('/students/' + year + "/" + semester)
+    .done(function (students) {
+      fillStudents(null, students);
+    })
+    .fail(function (){
+      fillStudents(new Error('Failed to get students'));
+    });
+}
+
+function fillStudents (err, students) {
+  if (err) console.log(err);
+  $('#students-list').empty();
+  students.forEach(function (student) {
+    $('#students-list').append(
+      '<div class="col-xs-8 col-md-3"><a href="#" class="thumbnail"><img data-src="holder.js/100%x180" alt="...">' + student.name + '</a></div>'
+    );
+  });
+}
